@@ -162,7 +162,7 @@ public class SimplePresentationScreen extends JFrame {
 		FotoLabel.setBounds(0, 5, 210, 206);	
 		
 		//cambios para q la imagen tenga la misma escala q la label
-		ImageIcon imageIcon = new ImageIcon(SimplePresentationScreen.class.getResource("/images/ImagenGuido.png"));
+		ImageIcon imageIcon = new ImageIcon(SimplePresentationScreen.class.getResource(studentData.getPathPhoto()));
 		Image imagen = imageIcon.getImage(); //conseguir imagen 
 		imagen = imagen.getScaledInstance(FotoLabel.getWidth(), FotoLabel.getHeight(),  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
 		imageIcon = new ImageIcon(imagen);  //cambiar la imagen del imageIcon

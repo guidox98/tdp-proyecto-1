@@ -15,7 +15,7 @@ public class Launcher {
 		String nombre = "Guido";
 		String mail = "guidopier@live.com.ar";
 		String githubURL = "https://github.com/guidox98";
-		String foto = "123";
+		String foto = "/images/ImagenGuido.png";
 		Student estudiante = new Student(id, apellido, nombre, mail, githubURL,foto);
 		
        
