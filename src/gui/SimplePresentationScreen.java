@@ -20,6 +20,9 @@ import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import java.awt.GridLayout;
 import javax.swing.SwingConstants;
+import java.awt.Toolkit;
+import javax.swing.ImageIcon;
+import java.awt.Image;
 
 @SuppressWarnings("serial")
 public class SimplePresentationScreen extends JFrame {
@@ -38,8 +41,10 @@ public class SimplePresentationScreen extends JFrame {
 	private JTextField EmailTextField;
 	private JTextField GitHubTextField;
 	private JLabel TiempoLabel;
+	private JLabel FotoLabel;
 
 	public SimplePresentationScreen(Student studentData) {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(SimplePresentationScreen.class.getResource("/images/tdp.png")));
 		this.studentData = studentData;
 		
 		contentPane = new JPanel();
@@ -48,7 +53,7 @@ public class SimplePresentationScreen extends JFrame {
 		
 		setTitle("TdP-DCIC-UNS 2021 :: Pantalla de presentación");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setSize(new Dimension(615, 262));
+		setSize(new Dimension(654, 262));
 		setResizable(false);
 		setContentPane(contentPane);
 		
@@ -146,5 +151,25 @@ public class SimplePresentationScreen extends JFrame {
 		// pide la fecha y el tiempo local con un formato dd/mm/aaaa y hh:mm:ss y lo muestra debajo de todo en el "sur"
 		TiempoLabel = new JLabel("Esta ventana fue generada el "+ LocalDate.now().format(fecha) +" a las " + LocalTime.now().format(hora));
 		contentPane.add(TiempoLabel, BorderLayout.SOUTH);
+		
+		JPanel ImagePanel = new JPanel();
+		contentPane.add(ImagePanel, BorderLayout.CENTER);
+		ImagePanel.setLayout(null);
+		
+		//creo el label q contendra la imagen y lo escalo
+		FotoLabel = new JLabel("");
+		FotoLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		FotoLabel.setBounds(0, 5, 210, 206);	
+		
+		//cambios para q la imagen tenga la misma escala q la label
+		ImageIcon imageIcon = new ImageIcon(SimplePresentationScreen.class.getResource("/images/ImagenGuido.png"));
+		Image imagen = imageIcon.getImage(); //conseguir imagen 
+		imagen = imagen.getScaledInstance(FotoLabel.getWidth(), FotoLabel.getHeight(),  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+		imageIcon = new ImageIcon(imagen);  //cambiar la imagen del imageIcon
+		FotoLabel.setIcon(imageIcon);
+		
+		//agrego la label al panel
+		ImagePanel.add(FotoLabel);
+
 	}
 }
